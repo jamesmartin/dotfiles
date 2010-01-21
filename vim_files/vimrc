@@ -130,6 +130,10 @@ filetype plugin indent on
 " To show current filetype use: set filetype
 
 "autocmd FileType html :set filetype=xhtml 
+autocmd FileType cpp :set filetype=cpp.cpputest
+autocmd FileType hpp :set filetype=hpp.cpputest
+autocmd FileType c :set filetype=c.cpputest
+autocmd FileType h :set filetype=h.cpputest
 
 
 " Inser New Line **************************************************************
