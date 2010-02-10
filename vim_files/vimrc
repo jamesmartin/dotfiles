@@ -193,6 +193,43 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 " May require ruby compiled in
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
 
+" JM running tests
+" All credit to Gary Bernhardt for this technique:
+" http://bitbucket.org/garybernhardt
+
+function! MakeClean()
+  silent ! echo
+  exec '!scons -c'
+endfunction
+
+function! RunTests()
+  silent ! echo
+  exec 'silent ! echo -e "\033 [1,36mRunning tests \033[0m"'
+  set makeprg=scons\ \check
+  silent w
+  exec "make "
+endfunction
+
+function! JumpToError()
+  if getqflist() != []
+    for error in getqflist()
+      if error['valid']
+        break
+      endif
+    endfor
+    let error_message = substitute(error['text'], '^ *', '', 'g')
+    silent cc!
+    exec ":sbuffer " . error['bufnr']
+    "call RedBar()
+    echo error_message
+  else
+    "call GreenBar()
+    echo "All tests passed"
+  endif
+endfunction
+
+nnoremap <leader>m :call RunTests()<cr>:redraw<cr>:call JumpToError()<cr>
+nnoremap <leader>c :call MakeClean()<cr>
 
 
 " -----------------------------------------------------------------------------  
