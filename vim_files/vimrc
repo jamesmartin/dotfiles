@@ -210,22 +210,57 @@ function! RunTests()
   exec "make "
 endfunction
 
+function! TestQfList()
+  if getqflist() != []
+    for error in getqflist()
+      "echo bufname(error.bufnr) ':' error.lnum '=' error.text
+      if error.text =~ '^OK '
+        echo 'Hooray!'
+      endif
+    endfor
+  endif
+endfunction
+
 function! JumpToError()
   if getqflist() != []
     for error in getqflist()
       if error['valid']
         break
       endif
+      if error.text =~ '.*up to date\.'
+        call GreenBar()
+        echo "Up to date"
+        return
+      endif
+      if error.text =~ '^OK '
+        call GreenBar()
+        echo "All tests passed"
+        return
+      endif
     endfor
     let error_message = substitute(error['text'], '^ *', '', 'g')
     silent cc!
     exec ":sbuffer " . error['bufnr']
-    "call RedBar()
+    call RedBar()
     echo error_message
   else
-    "call GreenBar()
+    call GreenBar()
     echo "All tests passed"
   endif
+endfunction
+
+function! RedBar()
+  hi RedBar ctermfg=white ctermbg=red guibg=red
+  echohl RedBar
+  echon repeat(" ",&columns - 1)
+  echohl
+endfunction
+
+function! GreenBar()
+  hi GreenBar ctermfg=white ctermbg=green guibg=green
+  echohl GreenBar
+  echon repeat(" ",&columns - 1)
+  echohl
 endfunction
 
 nnoremap <leader>m :call RunTests()<cr>:redraw<cr>:call JumpToError()<cr>
