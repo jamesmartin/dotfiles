@@ -84,6 +84,8 @@ set hlsearch  " highlight search
 set incsearch  " incremental search, search as you type
 set ignorecase " Ignore case when searching 
 set smartcase " Ignore case when searching lowercase
+" JM CTRL-n for toggling search hilighting
+:map <silent> <C-N> :set invhlsearch<CR>
 
 
 " Colors **********************************************************************
@@ -111,6 +113,9 @@ imap jj <Esc>
 imap uu _
 imap hh =>
 imap aa @
+" JM - useful to be able to toggle wrapping when writing prose
+nnoremap <leader>w :set wrap<CR>
+nnoremap <leader>W :set nowrap<CR>
 
 
 " Directories *****************************************************************
@@ -202,10 +207,13 @@ function! MakeClean()
   exec '!scons -c'
 endfunction
 
+autocmd FileType c set makeprg=scons\ \check
+autocmd FileType ruby set makeprg=rake
+
 function! RunTests()
   silent ! echo
   exec 'silent ! echo -e "\033 [1,36mRunning tests \033[0m"'
-  set makeprg=scons\ \check
+  "set makeprg=scons\ \check
   silent w
   exec "make "
 endfunction
@@ -265,7 +273,10 @@ endfunction
 
 nnoremap <leader>m :call RunTests()<cr>:redraw<cr>:call JumpToError()<cr>
 nnoremap <leader>c :call MakeClean()<cr>
+nnoremap <leader>r :exec '!rake'<cr>
 
+" JM the JumpToError function acts weird without this
+set switchbuf=useopen
 
 " -----------------------------------------------------------------------------  
 " |                              Plug-ins                                     |
