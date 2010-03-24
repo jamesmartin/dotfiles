@@ -140,6 +140,9 @@ autocmd FileType hpp :set filetype=hpp.cpputest
 autocmd FileType c :set filetype=c.cpputest
 autocmd FileType h :set filetype=h.cpputest
 
+augroup mkd
+  autocmd BufRead *.markdown set ai formatoptions=tcroqn2 comments=n:&gt;
+augroup END
 
 " Inser New Line **************************************************************
 map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
