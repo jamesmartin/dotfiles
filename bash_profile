@@ -23,20 +23,4 @@ alias synergy="sh ~/synergy.sh"
 
 alias gvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
 
-##
-# Your previous /Users/jma/.profile file was backed up as /Users/jma/.profile.macports-saved_2009-09-08_at_19:51:47
-##
-
-# MacPorts Installer addition on 2009-09-08_at_19:51:47: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-
-##
-# Your previous /Users/jamesmartin/.bash_profile file was backed up as /Users/jamesmartin/.bash_profile.macports-saved_2010-03-16_at_11:56:13
-##
-
-# MacPorts Installer addition on 2010-03-16_at_11:56:13: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
+alias ga="sh ~/ga"
