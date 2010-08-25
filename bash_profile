@@ -1,6 +1,13 @@
 PS1="\n<\[\033[0;32m\]\h\[\033[0m\]:\[\033[0;37m\]\u\[\033[0m\]> \j \w (\[\033[0;36m\]\$(~/TBytes.sh) Mb\[\033[0m\])\n! "
 #
-# Your previous .profile  (if any) is saved as .profile.mpsaved
+function random_words() {
+  ruby ~/Documents/work/cmrb/random_words.rb $1 | pbcopy
+}
+
+function top_email_addresses() {
+  head -n$1 ~/Desktop/21_subs.csv | cut -f1,2 -d, | pbcopy
+}
+
 # Setting the path for MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export TERM=xterm-color
@@ -23,4 +30,6 @@ alias synergy="sh ~/synergy.sh"
 
 alias gvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
 
-alias ga="sh ~/ga"
+alias rcc="ruby ~/randcc.rb ~/testcc.txt"
+alias ga="top_email_addresses"
+alias rw="random_words"
