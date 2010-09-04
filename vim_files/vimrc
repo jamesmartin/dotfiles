@@ -91,7 +91,9 @@ set smartcase " Ignore case when searching lowercase
 " Colors **********************************************************************
 "set t_Co=256 " 256 colors
 set background=dark 
-syntax on " syntax highlighting
+if &t_Co > 2 || has("gui_running")
+  syntax on " syntax highlighting
+endif
 colorscheme ir_black
 
 
@@ -144,6 +146,12 @@ autocmd FileType cpp :set filetype=cpp.cpputest
 autocmd FileType hpp :set filetype=hpp.cpputest
 autocmd FileType c :set filetype=c.cpputest
 autocmd FileType h :set filetype=h.cpputest
+
+"irb REstore cursor position
+autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 augroup mkd
   autocmd BufRead *.markdown set ai formatoptions=tcroqn2 comments=n:&gt;
