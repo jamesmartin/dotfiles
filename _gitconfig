@@ -1,0 +1,7 @@
+[color]
+  branch = auto
+  status = auto
+  ui = auto
+
+[core]
+	excludesfile = /Users/jma/.gitignore
