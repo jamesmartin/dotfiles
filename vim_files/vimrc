@@ -69,6 +69,8 @@ set numberwidth=4
 set equalalways " Multiple windows, when created, are equal in size
 set splitright
 
+set wildchar=<Tab> wildmenu wildmode=full
+
 "Vertical split then hop to new buffer
 :noremap ,v :vsp^M^W^W<cr>
 :noremap ,h :split^M^W^W<cr>
