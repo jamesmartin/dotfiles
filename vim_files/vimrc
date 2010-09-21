@@ -73,6 +73,13 @@ set splitbelow splitright
 :noremap ,v :vsp^M^W^W<cr>
 :noremap ,h :split^M^W^W<cr>
 
+"Moving around windows more easily
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+
 
 " Cursor highlights ***********************************************************
 set cursorline
@@ -84,8 +91,14 @@ set hlsearch  " highlight search
 set incsearch  " incremental search, search as you type
 set ignorecase " Ignore case when searching 
 set smartcase " Ignore case when searching lowercase
+set gdefault
 " JM CTRL-n for toggling search hilighting
 :map <silent> <C-N> :set invhlsearch<CR>
+nnoremap / /\v
+vnoremap / /\v
+" Bracket jumping with TAB
+nnoremap <tab> %
+vnoremap <tab> %
 
 
 " Colors **********************************************************************
@@ -170,7 +183,8 @@ set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 " Misc ************************************************************************
 set backspace=indent,eol,start
-set number " Show line numbers
+"set number " Show line numbers
+set relativenumber " Show line numbers relative to each other (version > vim7.3)
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 
@@ -179,6 +193,11 @@ set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 set listchars=trail:.,tab:>-,eol:$
 set nolist
 :noremap ,i :set list!<CR> " Toggle invisible chars
+
+" Long line stuff 
+set textwidth=79
+set formatoptions=qrnl
+set colorcolumn=85
 
 
 " Mouse ***********************************************************************
