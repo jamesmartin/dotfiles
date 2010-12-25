@@ -1,5 +1,6 @@
-PS1="\n<\[\033[0;32m\]\h\[\033[0m\]:\[\033[0;37m\]\u\[\033[0m\]> \j \w (\[\033[0;36m\]\$(~/TBytes.sh) Mb\[\033[0m\])\n! "
-#
+#PS1="\n<\[\033[0;32m\]\h\[\033[0m\]:\[\033[0;37m\]\u\[\033[0m\]> \j \w (\[\033[0;36m\]\$(~/TBytes.sh) Mb\[\033[0m\])\n! "
+PS1="\w$ "
+
 function random_words() {
   ruby ~/Documents/work/cmrb/random_words.rb $1 | pbcopy
 }
@@ -28,7 +29,7 @@ alias smartssan="sh ~/smartssan"
 alias wiki="python ~/moin/moin-1.8.0/wikiserver.py"
 alias synergy="sh ~/synergy.sh"
 
-alias gvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
+alias gvim='~/.scripts/mvim'
 
 alias rcc="ruby ~/randcc.rb ~/testcc.txt"
 alias ga="top_email_addresses"
