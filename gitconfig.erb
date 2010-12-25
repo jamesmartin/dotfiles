@@ -1,7 +1,15 @@
+[user]
+	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
+	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+
 [color]
   branch = auto
   status = auto
   ui = auto
 
 [core]
-	excludesfile = /Users/jma/.gitignore
+	excludesfile = <%= ENV['HOME'] %>/.gitignore
+
+[github]
+	user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
+	token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
