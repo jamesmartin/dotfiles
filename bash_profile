@@ -34,3 +34,5 @@ alias gvim='~/.scripts/mvim'
 alias rcc="ruby ~/randcc.rb ~/testcc.txt"
 alias ga="top_email_addresses"
 alias rw="random_words"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
