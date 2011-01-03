@@ -21,6 +21,7 @@ alias t="tree -L 2"
 alias rdp="sh ~/.scripts/rdp.sh"
 
 alias gvim='~/.scripts/mvim'
+alias vim='~/.scripts/vim'
 
 alias rcc="ruby ~/randcc.rb ~/testcc.txt"
 alias ga="top_email_addresses"
