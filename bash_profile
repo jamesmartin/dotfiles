@@ -9,7 +9,6 @@ function top_email_addresses() {
 }
 
 export PATH=/usr/local/bin:$PATH
-export TERM=xterm-color
 export EDITOR=~/.scripts/mvim
 
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
