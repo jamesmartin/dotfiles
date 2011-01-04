@@ -109,7 +109,12 @@ set background=dark
 if &t_Co > 2 || has("gui_running")
   syntax on " syntax highlighting
 endif
-colorscheme ir_black
+
+if has("gui_running")
+  colorscheme ir_black
+else
+  :color grb4
+endif
 
 
 " Status Line *****************************************************************
