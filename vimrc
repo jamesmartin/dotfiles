@@ -85,6 +85,7 @@ nnoremap <C-l> <C-w>l
 
 " Cursor highlights ***********************************************************
 set cursorline
+hi CursorLine cterm=NONE ctermbg=black
 "set cursorcolumn
 
 
