@@ -82,13 +82,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 
-
-" Cursor highlights ***********************************************************
-set cursorline
-hi CursorLine cterm=NONE ctermbg=black
-"set cursorcolumn
-
-
 " Searching *******************************************************************
 set hlsearch  " highlight search
 set incsearch  " incremental search, search as you type
@@ -117,6 +110,10 @@ else
   :color grb4
 endif
 
+" Cursor highlights ***********************************************************
+hi CursorLine cterm=NONE ctermbg=darkgrey
+set cursorline
+"set cursorcolumn
 
 " Status Line *****************************************************************
 set showcmd
