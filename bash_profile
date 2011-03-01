@@ -9,7 +9,7 @@ function top_email_addresses() {
 }
 
 export PATH=/usr/local/bin:$PATH
-export EDITOR=~/.scripts/mvim
+export EDITOR=~/.scripts/vim
 
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
