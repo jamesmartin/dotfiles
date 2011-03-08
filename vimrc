@@ -142,6 +142,9 @@ imap aa @
 nnoremap <leader>w :set wrap<CR>
 nnoremap <leader>W :set nowrap<CR>
 
+" Open file under cursor in quicklist
+nnoremap ,o :.cc<CR>
+
 
 " Directories *****************************************************************
 " Setup backup location and enable
