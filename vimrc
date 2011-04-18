@@ -133,6 +133,8 @@ set nofoldenable
 set foldlevel=1
 
 " Mappings ********************************************************************
+let mapleader= ","
+
 " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
 let mapleader = ","
 imap jj <Esc>
@@ -146,6 +148,11 @@ nnoremap <leader>W :set nowrap<CR>
 " Open file under cursor in quicklist
 nnoremap ,o :.cc<CR>
 
+" Toggle spell checking with <leader>s
+nmap <silent> <leader>s :set spell!<CR>
+
+" Set region to British English
+set spelllang=en_gb
 
 " Directories *****************************************************************
 " Setup backup location and enable
