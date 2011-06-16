@@ -199,8 +199,8 @@ set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 " Misc ************************************************************************
 set backspace=indent,eol,start
-"set number " Show line numbers
-set relativenumber " Show line numbers relative to each other (version > vim7.3)
+set number " Show line numbers
+"set relativenumber " Show line numbers relative to each other (version > vim7.3)
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 
