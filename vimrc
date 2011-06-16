@@ -69,6 +69,7 @@ set numberwidth=4
 set equalalways " Multiple windows, when created, are equal in size
 set splitright
 
+" Wildmenu stuff 
 set wildchar=<Tab> wildmenu wildmode=full
 
 "Vertical split then hop to new buffer
@@ -186,7 +187,7 @@ augroup mkd
   autocmd BufRead *.markdown set ai formatoptions=tcroqn2 comments=n:&gt;
 augroup END
 
-" Inser New Line **************************************************************
+" Insert New Line **************************************************************
 map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
 map <Enter> o<ESC>
 set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
@@ -215,13 +216,6 @@ set textwidth=79
 set formatoptions=qrnl
 set colorcolumn=85
 
-
-" Mouse ***********************************************************************
-"set mouse=a " Enable the mouse
-"behave xterm
-"set selectmode=mouse
-
-
 " Cursor Movement *************************************************************
 " Make cursor move by visual lines instead of file lines (when wrapping)
 map <up> gk
@@ -232,11 +226,9 @@ map j gj
 imap <down> <C-o>gj
 map E ge
 
-
 " Ruby stuff ******************************************************************
 "compiler ruby         " Enable compiler support for ruby
 "map <F5> :!ruby %<CR>
-
 
 " Omni Completion *************************************************************
 autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
@@ -346,32 +338,9 @@ let NERDTreeHijackNetrw=1
 " Single click for everything
 let NERDTreeMouseMode=1
 
-
-" SnippetsEmu *****************************************************************
-"imap <unique> <C-j> <Plug>Jumper
-"let g:snip_start_tag = "_\."
-"let g:snip_end_tag = "\._"
-"let g:snip_elem_delim = ":"
-"let g:snip_set_textmate_cp = '1'  " Tab to expand snippets, not automatically.
-
-
-" fuzzyfinder_textmate ********************************************************
-map ,f :FuzzyFinderTextMate<CR>
-map ,b :FuzzyFinderBuffer<CR>
-"let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
-
-" autocomplpop ***************************************************************
-" complete option
-"set complete=.,w,b,u,t,k
-"let g:AutoComplPop_CompleteOption = '.,w,b,u,t,k'
-"set complete=.
-let g:AutoComplPop_IgnoreCaseOption = 0
-let g:AutoComplPop_BehaviorKeywordLength = 2
-
 " rubytest *******************************************************************
 let g:rubytest_cmd_spec = "spec --color -f specdoc %p"
 let g:rubytest_cmd_example = "spec --color -f specdoc %p -e '%c'"
-
 
 " -----------------------------------------------------------------------------  
 " |                             OS Specific                                   |
