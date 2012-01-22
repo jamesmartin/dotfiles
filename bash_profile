@@ -29,6 +29,9 @@ alias j='jobs'
 alias start_mongo="mongod --dbpath /var/lib/mongodb/"
 
 alias s='git status --short'
+alias gup='git smart-pull'
+alias gl='git smart-log'
+alias gm='git smart-merge'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
