@@ -13,7 +13,9 @@ export EDITOR=~/.scripts/vim
 
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
-alias ls='ls -G'
+if [ `uname` = "Darwin" ]; then
+  alias ls='ls -G'
+fi
 alias ll='ls -h1'
 alias l="ls -alsht"
 alias t="tree -L 2"
