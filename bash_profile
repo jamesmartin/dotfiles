@@ -1,4 +1,3 @@
-PS1="\w$ "
 
 function random_words() {
   ruby ~/Documents/work/cmrb/random_words.rb $1 | pbcopy
@@ -41,5 +40,10 @@ alias gb='git branch -rav'
 # Git tab completion
 source ~/.scripts/git-completion.bash
 # # Show branch in status line
-PS1='[\W$(__git_ps1 " (%s)")]\$ '
+if [ `uname` == "Darwin" ]; then
+  PS1='[\W$(__git_ps1 " (%s)")]\$ '
+else
+  # add hostname if we're not on a mac
+  PS1='(\h) [\W$(__git_ps1 " (%s)")]\$ '
+fi
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
