@@ -98,8 +98,137 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY - courtesy of Gary Bernhardt
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RENAME CURRENT FILE - courtesy of Gary Bernhardt
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PROMOTE VARIABLE TO RSPEC LET - courtesy of Gary Bernhardt
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PromoteToLet()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
+endfunction
+:command! PromoteToLet :call PromoteToLet()
+:map <leader>p :PromoteToLet<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SWITCH BETWEEN TEST AND PRODUCTION CODE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! OpenTestAlternate()
+  let new_file = AlternateForCurrentFile()
+  exec ':e ' . new_file
+endfunction
+function! AlternateForCurrentFile()
+  let current_file = expand("%")
+  let new_file = current_file
+  let in_spec = match(current_file, '^spec/') != -1
+  let going_to_spec = !in_spec
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1
+  if going_to_spec
+    if in_app
+      let new_file = substitute(new_file, '^app/', '', '')
+    end
+    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
+    let new_file = 'spec/' . new_file
+  else
+    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+    let new_file = substitute(new_file, '^spec/', '', '')
+    if in_app
+      let new_file = 'app/' . new_file
+    end
+  endif
+  return new_file
+endfunction
+nnoremap <leader>. :call OpenTestAlternate()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RUNNING TESTS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    if match(a:filename, '\.feature$') != -1
+        exec ":!script/features " . a:filename
+    else
+        if filereadable("script/test")
+            exec ":!script/test " . a:filename
+        elseif filereadable("Gemfile")
+            exec ":!bundle exec rspec --color " . a:filename
+        else
+            exec ":!rspec --color " . a:filename
+        end
+    end
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+    if in_test_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number . " -b")
+endfunction
+
+map <leader>r :call RunTestFile()<cr>
+map <leader>R :call RunNearestTest()<cr>
+map <leader>a :call RunTests('')<cr>
+map <leader>c :w\|:!script/features<cr>
+map <leader>w :w\|:!script/features --profile wip<cr>
+
 " Colors **********************************************************************
-"set t_Co=256 " 256 colors
 set background=dark 
 if &t_Co > 2 || has("gui_running")
   syntax on " syntax highlighting
@@ -114,14 +243,11 @@ endif
 " Cursor highlights ***********************************************************
 hi CursorLine cterm=NONE ctermbg=darkgrey
 set cursorline
-"set cursorcolumn
 
 " Status Line *****************************************************************
 set showcmd
 set ruler " Show ruler
-"set ch=2 " Make command line two lines high
-"match LongLineWarning '\%120v.*' " Error format when a line is longer than 120
-
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 " Line Wrapping ***************************************************************
 set nowrap
@@ -145,41 +271,24 @@ imap aa @
 " JM - useful to be able to toggle wrapping when writing prose
 nnoremap <leader>w :set wrap<CR>
 nnoremap <leader>W :set nowrap<CR>
-
 " Open file under cursor in quicklist
 nnoremap ,o :.cc<CR>
-
 " Toggle spell checking with <leader>s
 nmap <silent> <leader>s :set spell!<CR>
-
 " Set region to British English
 set spelllang=en_gb
 
-" Directories *****************************************************************
-" Setup backup location and enable
-"set backupdir=~/backup/vim
-"set backup
-
-" Set Swap directory
-"set directory=~/backup/vim/swap
-
-" Sets path to directory buffer was loaded from
-"autocmd BufEnter * lcd %:p:h
-
-
 " File Stuff ******************************************************************
 filetype plugin indent on
-" To show current filetype use: set filetype
-
-"autocmd FileType html :set filetype=xhtml 
+autocmd FileType html :set filetype=xhtml 
 autocmd FileType cpp :set filetype=cpp.cpputest
 autocmd FileType hpp :set filetype=hpp.cpputest
 autocmd FileType c :set filetype=c.cpputest
 autocmd FileType h :set filetype=h.cpputest
 
-"irb REstore cursor position
+" Restore cursor position
 autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \   exe "normal! g`\"" |
       \ endif
 
@@ -190,18 +299,14 @@ augroup END
 " Insert New Line **************************************************************
 map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
 map <Enter> o<ESC>
-set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
-
 
 " Sessions ********************************************************************
 " Sets what is saved when you save a session
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
-
 " Misc ************************************************************************
 set backspace=indent,eol,start
 set number " Show line numbers
-"set relativenumber " Show line numbers relative to each other (version > vim7.3)
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 
@@ -241,86 +346,8 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 " May require ruby compiled in
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
 
-" JM running tests
-" All credit to Gary Bernhardt for this technique:
-" http://bitbucket.org/garybernhardt
-
-function! MakeClean()
-  silent ! echo
-  exec '!scons -c'
-endfunction
-
 autocmd FileType c set makeprg=scons\ \check
 autocmd FileType ruby set makeprg=rake
-
-function! RunTests()
-  silent ! echo
-  exec 'silent ! echo -e "\033 [1,36mRunning tests \033[0m"'
-  "set makeprg=scons\ \check
-  silent w
-  exec "make "
-endfunction
-
-function! TestQfList()
-  if getqflist() != []
-    for error in getqflist()
-      echo bufname(error.bufnr) ':' error.lnum '=' error.text 
-      echo 'type: ' error.type
-      if error['valid']
-        echo 'VALID!'
-      endif
-      if error.text =~ '^OK '
-        echo 'Hooray!'
-      endif
-    endfor
-  endif
-endfunction
-
-function! JumpToError()
-  if getqflist() != []
-    for error in getqflist()
-      if error['valid']
-        break
-      endif
-      if error.text =~ '.*up to date\.'
-        call GreenBar()
-        echo "Up to date"
-        return
-      endif
-      if error.text =~ '^OK '
-        call GreenBar()
-        echo "All tests passed"
-        return
-      endif
-    endfor
-    let error_message = substitute(error['text'], '^ *', '', 'g')
-    silent cc!
-    exec ":sbuffer " . error['bufnr']
-    call RedBar()
-    echo error_message
-  else
-    call GreenBar()
-    echo "All tests passed"
-  endif
-endfunction
-
-function! RedBar()
-  hi RedBar ctermfg=white ctermbg=red guibg=red
-  echohl RedBar
-  echon repeat(" ",&columns - 1)
-  echohl
-endfunction
-
-function! GreenBar()
-  hi GreenBar ctermfg=white ctermbg=green guibg=green
-  echohl GreenBar
-  echon repeat(" ",&columns - 1)
-  echohl
-endfunction
-
-nnoremap <leader>m :call RunTests()<cr>:redraw<cr>:call JumpToError()<cr>
-nnoremap <leader>c :call MakeClean()<cr>
-nnoremap <leader>r :exec '!rake'<cr>
 
 " JM the JumpToError function acts weird without this
 set switchbuf=useopen
@@ -338,10 +365,6 @@ let NERDTreeHijackNetrw=1
 " Single click for everything
 let NERDTreeMouseMode=1
 
-" rubytest *******************************************************************
-let g:rubytest_cmd_spec = "spec --color -f specdoc %p"
-let g:rubytest_cmd_example = "spec --color -f specdoc %p -e '%c'"
-
 " -----------------------------------------------------------------------------  
 " |                             OS Specific                                   |
 " |                      (GUI stuff goes in gvimrc)                           |
@@ -356,16 +379,6 @@ let g:rubytest_cmd_example = "spec --color -f specdoc %p -e '%c'"
 "if has("gui_win32")
   "" 
 "endif
-
-
-
-" -----------------------------------------------------------------------------  
-" |                               Startup                                     |
-" -----------------------------------------------------------------------------  
-" Open NERDTree on start
-"autocmd VimEnter * exe 'NERDTree' | wincmd l 
-
-
 
 " -----------------------------------------------------------------------------  
 " |                               Host specific                               |
