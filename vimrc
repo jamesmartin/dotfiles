@@ -259,9 +259,6 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=1
 
-" Mappings ********************************************************************
-let mapleader= ","
-
 " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
 let mapleader = ","
 imap jj <Esc>
