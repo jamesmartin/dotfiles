@@ -76,6 +76,22 @@ set wildchar=<Tab> wildmenu wildmode=full
 :noremap ,v :vsp^M^W^W<cr>
 :noremap ,h :split^M^W^W<cr>
 
+" Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
+let mapleader = ","
+imap jj <Esc>
+imap uu _
+imap hh =>
+imap aa @
+" JM - useful to be able to toggle wrapping when writing prose
+nnoremap <leader>w :set wrap<CR>
+nnoremap <leader>W :set nowrap<CR>
+" Open file under cursor in quicklist
+nnoremap ,o :.cc<CR>
+" Toggle spell checking with <leader>s
+nmap <silent> <leader>s :set spell!<CR>
+" Set region to British English
+set spelllang=en_gb
+
 "Moving around windows more easily
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -258,22 +274,6 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=1
-
-" Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
-let mapleader = ","
-imap jj <Esc>
-imap uu _
-imap hh =>
-imap aa @
-" JM - useful to be able to toggle wrapping when writing prose
-nnoremap <leader>w :set wrap<CR>
-nnoremap <leader>W :set nowrap<CR>
-" Open file under cursor in quicklist
-nnoremap ,o :.cc<CR>
-" Toggle spell checking with <leader>s
-nmap <silent> <leader>s :set spell!<CR>
-" Set region to British English
-set spelllang=en_gb
 
 " File Stuff ******************************************************************
 filetype plugin indent on
