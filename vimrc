@@ -98,6 +98,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Resizing windows
+nmap <s-l>  :3wincmd <<cr>
+nmap <s-h> :3wincmd ><cr>
+nmap <s-k>    :3wincmd +<cr>
+nmap <s-j>  :3wincmd -<cr>
 
 " Searching *******************************************************************
 set hlsearch  " highlight search
