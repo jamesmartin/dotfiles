@@ -1,0 +1,3 @@
+STAGING_DIR=/srv/www/staging.jmrtn.com
+alias go_online="sudo sh $STAGING_DIR/go_online"
+alias go_offline="sudo sh $STAGING_DIR/go_offline"
