@@ -392,3 +392,7 @@ endif
 "if hostname() == "foo"
   " do something
 "endif
+"
+" CTRL-P
+"
+set runtimepath^=~/.vim/bundle/ctrlp.vim
