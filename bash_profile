@@ -35,6 +35,8 @@ alias gl='git smart-log'
 alias gm='git smart-merge'
 alias gb='git branch -rav'
 
+alias be='bundle exec'
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 # Git tab completion
