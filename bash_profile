@@ -7,8 +7,9 @@ function top_email_addresses() {
   head -n$1 ~/Desktop/21_subs.csv | cut -f1,2 -d, | pbcopy
 }
 
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/mysql/bin:$PATH
 export EDITOR=~/.scripts/vim
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
@@ -35,6 +36,8 @@ alias gl='git smart-log'
 alias gm='git smart-merge'
 alias gb='git branch -rav'
 
+alias be='bundle exec'
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 # Git tab completion
@@ -53,3 +56,8 @@ PER_ENV_RC=".`hostname`_bash_rc"
 if [ -e $PER_ENV_RC ]; then
   source $PER_ENV_RC
 fi
+
+# Setting PATH for Python 3.3
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
+export PATH

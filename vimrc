@@ -118,6 +118,7 @@ vnoremap / /\v
 nnoremap <tab> %
 vnoremap <tab> %
 
+call pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY - courtesy of Gary Bernhardt
