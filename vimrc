@@ -252,15 +252,8 @@ map <leader>w :w\|:!script/features --profile wip<cr>
 
 " Colors **********************************************************************
 set background=dark 
-if &t_Co > 2 || has("gui_running")
-  syntax on " syntax highlighting
-endif
-
-if has("gui_running")
-  colorscheme ir_black
-else
-  :color grb4
-endif
+colorscheme solarized
+syntax on
 
 " Cursor highlights ***********************************************************
 hi CursorLine cterm=NONE ctermbg=darkgrey
