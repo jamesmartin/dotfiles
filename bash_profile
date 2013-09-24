@@ -1,15 +1,5 @@
-
-function random_words() {
-  ruby ~/Documents/work/cmrb/random_words.rb $1 | pbcopy
-}
-
-function top_email_addresses() {
-  head -n$1 ~/Desktop/21_subs.csv | cut -f1,2 -d, | pbcopy
-}
-
-export PATH=/usr/local/bin:/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 export EDITOR=~/.scripts/vim
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
@@ -24,11 +14,7 @@ alias rdp="sh ~/.scripts/rdp.sh"
 alias gvim='~/.scripts/mvim'
 alias vim='/usr/bin/vim'
 
-alias rcc="ruby ~/randcc.rb ~/testcc.txt"
-alias ga="top_email_addresses"
-alias rw="random_words"
 alias j='jobs'
-alias start_mongo="mongod --dbpath /var/lib/mongodb/"
 
 alias s='git status --short'
 alias gup='git smart-pull'
