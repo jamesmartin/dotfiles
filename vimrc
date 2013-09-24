@@ -256,7 +256,6 @@ colorscheme solarized
 syntax on
 
 " Cursor highlights ***********************************************************
-hi CursorLine cterm=NONE ctermbg=darkgrey
 set cursorline
 
 " Status Line *****************************************************************
