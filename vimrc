@@ -360,6 +360,9 @@ let NERDTreeHijackNetrw=1
 " Single click for everything
 let NERDTreeMouseMode=1
 
+" Ack/Ag
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " -----------------------------------------------------------------------------  
 " |                             OS Specific                                   |
 " |                      (GUI stuff goes in gvimrc)                           |
