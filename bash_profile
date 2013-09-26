@@ -1,12 +1,3 @@
-
-function random_words() {
-  ruby ~/Documents/work/cmrb/random_words.rb $1 | pbcopy
-}
-
-function top_email_addresses() {
-  head -n$1 ~/Desktop/21_subs.csv | cut -f1,2 -d, | pbcopy
-}
-
 export PATH=/usr/local/bin:$PATH
 export EDITOR=~/.scripts/vim
 
@@ -23,11 +14,7 @@ alias rdp="sh ~/.scripts/rdp.sh"
 alias gvim='~/.scripts/mvim'
 alias vim='/usr/bin/vim'
 
-alias rcc="ruby ~/randcc.rb ~/testcc.txt"
-alias ga="top_email_addresses"
-alias rw="random_words"
 alias j='jobs'
-alias start_mongo="mongod --dbpath /var/lib/mongodb/"
 
 alias s='git status --short'
 alias gup='git smart-pull'
@@ -55,3 +42,8 @@ PER_ENV_RC=".`hostname`_bash_rc"
 if [ -e $PER_ENV_RC ]; then
   source $PER_ENV_RC
 fi
+
+# Setting PATH for Python 3.3
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
+export PATH

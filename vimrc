@@ -118,6 +118,7 @@ vnoremap / /\v
 nnoremap <tab> %
 vnoremap <tab> %
 
+call pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY - courtesy of Gary Bernhardt
@@ -251,18 +252,10 @@ map <leader>w :w\|:!script/features --profile wip<cr>
 
 " Colors **********************************************************************
 set background=dark 
-if &t_Co > 2 || has("gui_running")
-  syntax on " syntax highlighting
-endif
-
-if has("gui_running")
-  colorscheme ir_black
-else
-  :color grb4
-endif
+colorscheme solarized
+syntax on
 
 " Cursor highlights ***********************************************************
-hi CursorLine cterm=NONE ctermbg=darkgrey
 set cursorline
 
 " Status Line *****************************************************************
@@ -366,6 +359,9 @@ let NERDTreeHijackNetrw=1
 
 " Single click for everything
 let NERDTreeMouseMode=1
+
+" Ack/Ag
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " -----------------------------------------------------------------------------  
 " |                             OS Specific                                   |
