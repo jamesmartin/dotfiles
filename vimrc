@@ -392,3 +392,7 @@ endif
 " CTRL-P
 "
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set wildignore+=*/tmp/*,jspm_packages/*,node_modules/*
+let g:ctrlp_custom_ignore={
+  \'dir': '\v[\/](\.(git|hg|svn)|(jspm_packages|node_modules))$'
+  \}
