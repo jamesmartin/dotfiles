@@ -21,9 +21,11 @@ alias gup='git smart-pull'
 alias gl='git smart-log'
 alias gm='git smart-merge'
 alias gb='git branch -rav'
+alias ajax="curl -H 'X-Requested-With: XMLHttpRequest'"
 
 alias be='bundle exec'
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 # Git tab completion
@@ -47,3 +49,6 @@ fi
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
 export PATH
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
+
+source ~/.bashrc
