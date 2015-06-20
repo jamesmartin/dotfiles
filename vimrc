@@ -288,7 +288,8 @@ autocmd BufReadPost *
       \ endif
 
 augroup mkd
-  autocmd BufRead *.markdown set ai formatoptions=tcroqn2 comments=n:&gt;
+  autocmd BufRead *.markdown set ai formatoptions=tcroqn2 comments=n:&gt textwidth=0;
+  autocmd BufRead *.md set ai formatoptions=tcroqn2 comments=n:&gt textwidth=0;
 augroup END
 
 " Insert New Line **************************************************************
