@@ -287,11 +287,6 @@ autocmd BufReadPost *
       \   exe "normal! g`\"" |
       \ endif
 
-augroup mkd
-  autocmd BufRead *.markdown set ai formatoptions=tcroqn2 comments=n:&gt textwidth=0;
-  autocmd BufRead *.md set ai formatoptions=tcroqn2 comments=n:&gt textwidth=0;
-augroup END
-
 " Insert New Line **************************************************************
 map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
 map <Enter> o<ESC>
@@ -344,6 +339,10 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 
 autocmd FileType c set makeprg=scons\ \check
 autocmd FileType ruby set makeprg=rake
+
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md setlocal textwidth=0
+autocmd FileType markdown setlocal spell
 
 " JM the JumpToError function acts weird without this
 set switchbuf=useopen
