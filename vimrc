@@ -90,7 +90,7 @@ nnoremap ,o :.cc<CR>
 " Toggle spell checking with <leader>s
 nmap <silent> <leader>s :set spell!<CR>
 " Set region to British English
-set spelllang=en_gb
+set spelllang=en_us
 
 "Moving around windows more easily
 nnoremap <C-h> <C-w>h
