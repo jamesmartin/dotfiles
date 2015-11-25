@@ -1,3 +1,4 @@
+# Symlinks files into the home directory, rendering with ERB where necessary.
 # Originally from https://github.com/ryanb/dotfiles/blob/master/Rakefile
 
 require 'rake'
