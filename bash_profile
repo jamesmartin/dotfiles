@@ -21,6 +21,7 @@ alias gup='git smart-pull'
 alias gl='git smart-log'
 alias gm='git smart-merge'
 alias gb='git branch -rav'
+alias fmod='git status --porcelain -uno | cut -c4-' # Only the filenames of modified files
 alias ajax="curl -H 'X-Requested-With: XMLHttpRequest'"
 
 alias be='bundle exec'
