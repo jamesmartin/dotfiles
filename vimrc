@@ -23,7 +23,7 @@
 " |   :call Tabstyle_spaces = set tab to 2 spaces                             |
 " |                                                                           |
 " | Put machine/user specific settings in ~/.vimrc.local                      |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 
 
 set nocompatible
@@ -121,16 +121,36 @@ vnoremap <tab> %
 call pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto commit to git - inspired by https://github.com/tlvince/vim-auto-commit
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! AutoGitCommit()
+  let oldworkingdir = getcwd()
+  :lcd %:p:h
+
+  call system('git rev-parse --git-dir > /dev/null 2>&1')
+  if v:shell_error
+    return " file can't be under version control
+  end
+
+  call system('git add ' . expand('%:p'))
+  let message = 'Updated (auto-commit) ' . expand('%')
+  call system('git commit -m ' . shellescape(message, 1))
+
+  exe ':lcd ' . oldworkingdir
+endfunction
+map <leader>c :w\|:call AutoGitCommit()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY - courtesy of Gary Bernhardt
 " Indent if we're at the beginning of a line. Else, do completion.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
@@ -139,13 +159,13 @@ inoremap <s-tab> <c-n>
 " RENAME CURRENT FILE - courtesy of Gary Bernhardt
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
 endfunction
 map <leader>m :call RenameFile()<cr>
 
@@ -247,7 +267,6 @@ endfunction
 map <leader>r :call RunTestFile()<cr>
 map <leader>R :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
-map <leader>c :w\|:!script/features<cr>
 map <leader>w :w\|:!script/features --profile wip<cr>
 
 " Colors **********************************************************************
