@@ -360,7 +360,7 @@ autocmd FileType c set makeprg=scons\ \check
 autocmd FileType ruby set makeprg=rake
 
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.md setlocal textwidth=0
+autocmd BufRead,BufNewFile *.md setlocal textwidth=79
 autocmd FileType markdown setlocal spell
 
 " JM the JumpToError function acts weird without this
