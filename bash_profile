@@ -22,12 +22,10 @@ alias gl='git smart-log'
 alias gm='git smart-merge'
 alias gb='git branch -rav'
 alias fmod='git status --porcelain -uno | cut -c4-' # Only the filenames of modified files
+alias umod='git status --porcelain -u | cut -c4-' # Only the filenames of unversioned files
 alias ajax="curl -H 'X-Requested-With: XMLHttpRequest'"
 
 alias be='bundle exec'
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 # Git tab completion
 source ~/.scripts/git-completion.bash
@@ -46,14 +44,6 @@ if [ -e $PER_ENV_RC ]; then
   source $PER_ENV_RC
 fi
 
-# Node Version Manager
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
-
-# Setting PATH for Python 3.3
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
-
-export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
-export PATH
-
 [[ -s "$HOME/.bashrc" ]] && . "$HOME/.bashrc"  # Per machine bash configuration
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
