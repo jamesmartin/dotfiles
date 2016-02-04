@@ -24,6 +24,7 @@ alias gb='git branch -rav'
 alias fmod='git status --porcelain -uno | cut -c4-' # Only the filenames of modified files
 alias umod='git status --porcelain -u | cut -c4-' # Only the filenames of unversioned files
 alias ajax="curl -H 'X-Requested-With: XMLHttpRequest'"
+alias marked="open -a 'Marked 2'"
 
 alias be='bundle exec'
 
