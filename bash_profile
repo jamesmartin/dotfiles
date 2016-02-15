@@ -1,3 +1,4 @@
+export PATH=~/.scripts:$PATH
 export PATH=/usr/local/bin:$PATH
 export EDITOR=~/.scripts/vim
 
