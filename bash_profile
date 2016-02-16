@@ -1,6 +1,6 @@
 export PATH=~/.scripts:$PATH
 export PATH=/usr/local/bin:$PATH
-export EDITOR=~/.scripts/vim
+export EDITOR=/usr/bin/vim
 
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
@@ -12,8 +12,7 @@ alias l="ls -alsht"
 alias t="tree -L 2"
 alias rdp="sh ~/.scripts/rdp.sh"
 
-alias gvim='~/.scripts/mvim'
-alias vim='/usr/bin/vim'
+alias vim=$EDITOR
 
 alias j='jobs'
 
