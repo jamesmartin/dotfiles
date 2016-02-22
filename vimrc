@@ -356,7 +356,7 @@ set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 " Invisible characters *********************************************************
 set listchars=trail:.,tab:>-,eol:$
 set nolist
-:noremap ,i :set list!<CR> " Toggle invisible chars
+:noremap <leader>i :set list!<CR> " Toggle invisible chars
 
 " Long line stuff 
 set textwidth=79
