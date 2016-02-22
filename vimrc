@@ -411,8 +411,8 @@ let NERDTreeHijackNetrw=1
 " Single click for everything
 let NERDTreeMouseMode=1
 
-" Ack/Ag
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" Ack/Ag (use ag! variant to prevent auto-load first result)
+let g:ackprg = 'ag! --nogroup --nocolor --column'
 
 " -----------------------------------------------------------------------------  
 " |                             OS Specific                                   |
