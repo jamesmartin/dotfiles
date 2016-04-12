@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+# https://gist.github.com/peff/380fd6965859e8367c4fbd464b39eb75
+# Turn a file/line combination into a link to github.com.
+# I use this from vim with:
+#
+#   command! Link :exec "!ghpath %:p " . line(".")
+#
+# Running ":Link" anywhere will get you a link to the current file and
+# line number. Remember to drop this as "ghpath" into your PATH, and
+# to turn on the executable bit.
+
+file=$1
+line=$2
+
+cd "$(dirname "$file")" || exit 1
+
+url=$(git config remote.origin.url)
+url=${url%.git}
+if ! repo=$(expr "$url" : "https://github.com/\(.*\)") &&
+   ! repo=$(expr "$url" : "git@github.com:\(.*\)") &&
+   ! repo=$(expr "$url" : "git://github.com/\(.*\)")
+then
+  echo >&2 "fatal: origin repo is not at github: $url"
+  exit 1
+fi
+
+# We can't use our commit sha directly, because we
+# might be on a commit that has not yet been pushed.
+# But finding the merge-base of our current HEAD
+# and the remote refs is a good guess. If the remote
+# does have our commit, we will use it. And otherwise, we
+# should walk back to the nearest fork point (i.e.,
+# what we started building on from upstream).
+commit=$(git merge-base HEAD \
+  $(git for-each-ref refs/remotes/origin --format='%(objectname)'))
+path="$(git rev-parse --show-prefix)$(basename "$file")"
+
+# XXX should probably urlencode
+echo "https://github.com/$repo/blob/$commit/$path#L$line"
