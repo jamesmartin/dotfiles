@@ -121,6 +121,12 @@ vnoremap <tab> %
 call pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Get a github.com URL for the current file/line
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! Link :exec "!ghpath %:p " . line(".")
+map <leader>l :Link<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
