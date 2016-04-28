@@ -175,6 +175,7 @@ function! AutoGitCommit()
   call system('git commit -m ' . shellescape(message, 1))
 
   exe ':lcd ' . oldworkingdir
+  redraw!
 endfunction
 map <leader>c :w\|:call AutoGitCommit()<cr>
 

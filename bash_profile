@@ -1,6 +1,9 @@
 export PATH=~/.scripts:$PATH
 export PATH=/usr/local/bin:$PATH
 export EDITOR=/usr/bin/vim
+GPG_TTY=$(tty)
+export GPG_TTY
+eval $(gpg-agent --daemon)
 
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
