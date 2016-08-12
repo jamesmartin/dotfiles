@@ -86,10 +86,10 @@ imap aa @
 nnoremap <leader>w :set wrap<CR>
 nnoremap <leader>W :set nowrap<CR>
 " Open file under cursor in quicklist
-nnoremap ,o :.cc<CR>
+nnoremap <leader>o :.cc<CR>
 " Toggle spell checking with <leader>s
 nmap <silent> <leader>s :set spell!<CR>
-" Set region to British English
+" Set region to US English
 set spelllang=en_us
 
 "Moving around windows more easily
