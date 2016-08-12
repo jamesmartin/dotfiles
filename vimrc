@@ -418,8 +418,13 @@ let NERDTreeHijackNetrw=1
 " Single click for everything
 let NERDTreeMouseMode=1
 
-" Ack/Ag (use ag! variant to prevent auto-load first result)
-let g:ackprg = 'ag! --nogroup --nocolor --column'
+" Ack/Ag
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+
+" Command alias for Ack
+:ca Ag Ack!
 
 " -----------------------------------------------------------------------------  
 " |                             OS Specific                                   |
