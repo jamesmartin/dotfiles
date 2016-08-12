@@ -20,6 +20,19 @@ git submodule add https://github.com/some/vim.plugin.git
 git commit -m "Add some vim plugin"
 ```
 
+## Removing Vim Packages
+
+```
+git submodule deinit ./vim/bundle/vim.plugin
+git rm ./vim/bundle/vim.plugin
+# Note: asubmodule (no trailing slash)
+# or, if you want to leave it in your working tree
+git rm --cached ./vim/bundle/vim.plugin
+rm -rf .git/modules/vim/bundle/vim.plugin
+```
+
+Commit your changes.
+
 ## Colors
 
 [Solarized](http://ethanschoonover.com/solarized): Used for Vim and iTerm.
