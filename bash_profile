@@ -41,7 +41,7 @@ else
   PS1='(\h) [\W$(__git_ps1 " (%s)")]\$ '
 fi
 # Prints out a full-width horizontal rule and *then* the prompt to provide a visual cue for the end of command output
-export PROMPT_COMMAND="printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -;printf '\n';echo -ne '\033]0;${PWD/#$HOME/~}\007'"
+export PROMPT_COMMAND="printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -;echo -ne '\033]0;${PWD/#$HOME/~}\007'"
 
 # Load environment specific config
 PER_ENV_RC=".`hostname`_bash_rc"
