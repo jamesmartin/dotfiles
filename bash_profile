@@ -26,10 +26,12 @@ alias gm='git smart-merge'
 alias gb='git branch -rav'
 alias fmod='git status --porcelain -uno | cut -c4-' # Only the filenames of modified files
 alias umod='git status --porcelain -u | cut -c4-' # Only the filenames of unversioned files
+alias con='git status --short | grep -E "^(?:U|AA)"'
 alias ajax="curl -H 'X-Requested-With: XMLHttpRequest'"
 alias marked="open -a 'Marked 2'"
 
 alias be='bundle exec'
+alias fix-js="rm -rf node_modules ; script/bootstrap"
 
 # Git tab completion
 source ~/.scripts/git-completion.bash
