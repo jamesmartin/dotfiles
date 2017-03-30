@@ -37,4 +37,4 @@ commit=$(git merge-base HEAD \
 path="$(git rev-parse --show-prefix)$(basename "$file")"
 
 # XXX should probably urlencode
-echo "https://github.com/$repo/blob/$commit/$path#L$line"
+echo "https://github.com/$repo/blob/$commit/$path#L$line" | pbcopy
