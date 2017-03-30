@@ -28,7 +28,6 @@
 
 set nocompatible
 
-
 " Tabs ************************************************************************
 "set sta " a <Tab> in an indent inserts 'shiftwidth' spaces
 
@@ -122,6 +121,7 @@ call pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Get a github.com URL for the current file/line
+" If it stopes working try `git fetch --prune`
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! Link :exec "!ghpath %:p " . line(".")
 map <leader>l :Link<cr>
