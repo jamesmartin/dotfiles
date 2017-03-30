@@ -456,6 +456,8 @@ endif
 "
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,jspm_packages/*,node_modules/*
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=20
 let g:ctrlp_custom_ignore={
-  \'dir': '\v[\/](\.(git|hg|svn)|(jspm_packages|node_modules))$'
+  \'dir': '\v[\/](\.(git|hg|svn)|(jspm_packages|node_modules|vendor))$'
   \}
