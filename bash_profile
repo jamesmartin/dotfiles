@@ -60,3 +60,5 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-messages --glob '!
 # Rather than `$(rbenv init -)`, prepend rbenv shims onto the path.
 # We don't need all of the other fancy rbenv command line stuff.
 export PATH="$HOME/.rbenv/shims:$PATH"
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
