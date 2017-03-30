@@ -461,3 +461,7 @@ let g:ctrlp_max_depth=20
 let g:ctrlp_custom_ignore={
   \'dir': '\v[\/](\.(git|hg|svn)|(jspm_packages|node_modules|vendor))$'
   \}
+"
+" fzf fuzzy finder
+"
+set rtp+=/usr/local/opt/fzf
