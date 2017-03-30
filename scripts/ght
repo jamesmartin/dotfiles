@@ -13,7 +13,7 @@ TEST_FILE=$(find $GITHUB_REPO/test -iname "*_test\.rb" | selecta)
 clear
 
 echo "Running tests: $TEST_FILE"
-echo "$TESTRB $TEST_FILE" |pbcopy
+echo "TEST_ALL_FEATURES=1 $TESTRB $TEST_FILE" |pbcopy
 echo
 cd $GITHUB_REPO
 
