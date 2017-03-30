@@ -53,9 +53,8 @@ fi
 
 [[ -s "$HOME/.bashrc" ]] && . "$HOME/.bashrc"  # Per machine bash configuration
 
-# nodenv
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
+# fzf
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-messages --glob '!.git/*'"
 
 # rbenv:
 # Rather than `$(rbenv init -)`, prepend rbenv shims onto the path.
