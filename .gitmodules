@@ -25,3 +25,6 @@
 [submodule "vim/bundle/fzf.vim"]
 	path = vim/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
+[submodule "vim/bundle/swift.vim"]
+	path = vim/bundle/swift.vim
+	url = https://github.com/keith/swift.vim.git
