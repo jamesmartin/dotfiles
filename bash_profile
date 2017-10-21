@@ -37,7 +37,7 @@ alias fix-js="rm -rf node_modules ; script/bootstrap"
 source ~/.scripts/git-completion.bash
 # # Show branch in status line
 if [ `uname` == "Darwin" ]; then
-  PS1='[\W$(__git_ps1 " (%s)")]\$ '
+  PS1='[\W$(__git_ps1 " (%s)")] \D{%F %T} \$ '
 else
   # add hostname if we're not on a mac
   PS1='(\h) [\W$(__git_ps1 " (%s)")]\$ '
