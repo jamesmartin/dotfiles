@@ -61,4 +61,6 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-messages --glob '!
 # We don't need all of the other fancy rbenv command line stuff.
 export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="$HOME/.nodenv/bin:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)
 eval "$(nodenv init -)"
