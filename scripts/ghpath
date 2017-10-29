@@ -35,6 +35,9 @@ fi
 commit=$(git merge-base HEAD \
   $(git for-each-ref refs/remotes/origin --format='%(objectname)'))
 path="$(git rev-parse --show-prefix)$(basename "$file")"
+url="https://github.com/$repo/blob/$commit/$path#L$line"
+
+echo "Copied '$url' to the clipboard"
 
 # XXX should probably urlencode
-echo "https://github.com/$repo/blob/$commit/$path#L$line" | pbcopy
+echo $url | pbcopy
