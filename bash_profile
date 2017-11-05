@@ -1,6 +1,6 @@
 export PATH=~/.scripts:$PATH
 export PATH=/usr/local/bin:$PATH
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/local/bin/vim
 GPG_TTY=$(tty)
 export GPG_TTY
 eval $(gpg-agent --daemon)
