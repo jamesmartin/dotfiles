@@ -133,11 +133,9 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Get a github.com URL for the current file/line
-" If it stopes working try `git fetch --prune`
+" Copy a github.com URL for the current file/line from Fugitive
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! Link :exec "!ghpath %:p " . line(".")
-map <leader>l :Link<cr>
+map <leader>l :Gbrowse!<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Run a given vim command on the results of fuzzy selecting from a given shell
