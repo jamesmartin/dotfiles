@@ -46,7 +46,7 @@ fi
 export PROMPT_COMMAND="printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -;echo -ne '\033]0;${PWD/#$HOME/~}\007'"
 
 # Load environment specific config
-PER_ENV_RC=".`hostname`_bash_rc"
+PER_ENV_RC="$HOME/.`hostname`_bash_rc"
 if [ -e $PER_ENV_RC ]; then
   source $PER_ENV_RC
 fi
