@@ -31,3 +31,6 @@
 [submodule "vim/bundle/vim-elixir"]
 	path = vim/bundle/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule "vim/bundle/vim-vmath"]
+	path = vim/bundle/vim-vmath
+	url = https://github.com/nixon/vim-vmath.git

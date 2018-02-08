@@ -431,6 +431,10 @@ let NERDTreeHijackNetrw=1
 " Single click for everything
 let NERDTreeMouseMode=1
 
+" https://github.com/nixon/vim-vmath
+vmap <expr>  ++  VMATH_YankAndAnalyse()
+nmap         ++  vip++
+
 " -----------------------------------------------------------------------------  
 " |                             OS Specific                                   |
 " |                      (GUI stuff goes in gvimrc)                           |
