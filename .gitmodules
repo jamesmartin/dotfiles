@@ -34,3 +34,6 @@
 [submodule "vim/bundle/vim-vmath"]
 	path = vim/bundle/vim-vmath
 	url = https://github.com/nixon/vim-vmath.git
+[submodule "vim/bundle/vim-rego"]
+	path = vim/bundle/vim-rego
+	url = https://github.com/tsandall/vim-rego.git
