@@ -333,6 +333,14 @@ function! MarkdownLinkGitHubUsernames()
   exec ':set iskeyword=' . old_iskeyword
 endfunction
 
+function! MarkdownLinkGitHubIssues()
+  echo "Linkifying GitHub issues..."
+  " Matches GitHub issue or PR URLs, including params/comment anchors. E.g.
+  " https://github.com/github/ecosystem-iam/issues/304#issuecomment-416613035
+  " Allows for an optional punctuation character [. , :]
+  %s/\(\<https:\/\/github\.com\/\S*\/\(\S*\)\/\w\+\/\(\d*\)\S*\)\:\?\>/\[\2\#\3\]\(\1\)/gc
+endfunction
+
 " Colors **********************************************************************
 set background=dark 
 colorscheme solarized
