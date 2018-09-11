@@ -321,6 +321,18 @@ map <leader>R :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
 map <leader>w :w\|:!script/features --profile wip<cr>
 
+" GitHub Markdown **********************************************************************
+function! MarkdownLinkGitHubUsernames()
+  echo "Linkifying GitHub usernames..."
+  let old_iskeyword=&iskeyword
+  echo old_iskeyword
+  " Temporarily set the '@' sign to be considered part of a Vim WORD so that
+  " the beginning and end of word search anchors capture it when matching.
+  exec ':set iskeyword+=@-@'
+  %s/\(\<@\S*\>\)/\[\1\]\(https:\/\/github.com\/\1\)/gc
+  exec ':set iskeyword=' . old_iskeyword
+endfunction
+
 " Colors **********************************************************************
 set background=dark 
 colorscheme solarized
