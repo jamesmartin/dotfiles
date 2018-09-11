@@ -326,9 +326,10 @@ function! MarkdownLinkGitHubUsernames()
   echo "Linkifying GitHub usernames..."
   let old_iskeyword=&iskeyword
   echo old_iskeyword
-  " Temporarily set the '@' sign to be considered part of a Vim WORD so that
-  " the beginning and end of word search anchors capture it when matching.
+  " Temporarily set the '@' sign and '-' to be considered part of a Vim WORD so that
+  " the beginning and end of word search anchors capture them when matching.
   exec ':set iskeyword+=@-@'
+  exec ':set iskeyword+=-'
   %s/\(\<@\)\(\S*\>\)/\[\1\2\]\(https:\/\/github.com\/\2\)/gc
   exec ':set iskeyword=' . old_iskeyword
 endfunction
