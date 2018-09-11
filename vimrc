@@ -329,7 +329,7 @@ function! MarkdownLinkGitHubUsernames()
   " Temporarily set the '@' sign to be considered part of a Vim WORD so that
   " the beginning and end of word search anchors capture it when matching.
   exec ':set iskeyword+=@-@'
-  %s/\(\<@\S*\>\)/\[\1\]\(https:\/\/github.com\/\1\)/gc
+  %s/\(\<@\)\(\S*\>\)/\[\1\2\]\(https:\/\/github.com\/\2\)/gc
   exec ':set iskeyword=' . old_iskeyword
 endfunction
 
