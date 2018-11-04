@@ -330,7 +330,7 @@ function! MarkdownLinkGitHubUsernames()
   " the beginning and end of word search anchors capture them when matching.
   exec ':set iskeyword+=@-@'
   exec ':set iskeyword+=-'
-  %s/\(\<@\)\(\S*\>\)/\[\1\2\]\(https:\/\/github.com\/\2\)/gc
+  %s/\(\<@\)\(\S*\>\)/\[\1\2\]\(https:\/\/github.com\/\2\)/c
   exec ':set iskeyword=' . old_iskeyword
 endfunction
 
@@ -339,7 +339,7 @@ function! MarkdownLinkGitHubIssues()
   " Matches GitHub issue or PR URLs, including params/comment anchors. E.g.
   " https://github.com/github/ecosystem-iam/issues/304#issuecomment-416613035
   " Allows for an optional punctuation character [. , :]
-  %s/\(\<https:\/\/github\.com\/\S*\/\(\S*\)\/\w\+\/\(\d*\)\S*\)\:\?\>/\[\2\#\3\]\(\1\)/gc
+  %s/\(\<https:\/\/github\.com\/\S*\/\(\S*\)\/\w\+\/\(\d*\)\S*\)\:\?\>/\[\2\#\3\]\(\1\)/c
 endfunction
 
 " Colors **********************************************************************
