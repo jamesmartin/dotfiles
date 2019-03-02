@@ -3,7 +3,11 @@ export PATH=/usr/local/bin:$PATH
 export EDITOR=/usr/local/bin/vim
 GPG_TTY=$(tty)
 export GPG_TTY
-eval $(gpg-agent --daemon)
+if ! ps -ax | grep -v grep | grep gpg-agent > /dev/null
+then
+  echo "Starting gpg-agent as daemon..."
+  eval $(gpg-agent --daemon)
+fi
 
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
@@ -50,8 +54,6 @@ PER_ENV_RC="$HOME/.`hostname`_bash_rc"
 if [ -e $PER_ENV_RC ]; then
   source $PER_ENV_RC
 fi
-
-[[ -s "$HOME/.bashrc" ]] && . "$HOME/.bashrc"  # Per machine bash configuration
 
 # fzf
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-messages --glob '!.git/*'"
