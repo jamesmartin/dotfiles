@@ -62,7 +62,12 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-messages --glob '!
 # Rather than `$(rbenv init -)`, prepend rbenv shims onto the path.
 # We don't need all of the other fancy rbenv command line stuff.
 export PATH="$HOME/.rbenv/shims:$PATH"
+
+# Node.js
 export PATH="$HOME/.nodenv/bin:$PATH"
-export PATH=$PATH:$(go env GOPATH)/bin
-export GOPATH=$(go env GOPATH)
 eval "$(nodenv init -)"
+
+# Go
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/dev/goproj
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
