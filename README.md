@@ -33,6 +33,12 @@ rm -rf .git/modules/vim/bundle/vim.plugin
 
 Commit your changes.
 
+## Other Vim dependencies
+
+- [FZF fuzzy finder](https://github.com/junegunn/fzf#installation)
+- [RipGrep (rg)](https://github.com/BurntSushi/ripgrep#installation)
+
+
 ## Colors
 
 [Solarized](http://ethanschoonover.com/solarized): Used for Vim and iTerm.
