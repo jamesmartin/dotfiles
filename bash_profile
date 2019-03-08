@@ -55,7 +55,7 @@ if [ -e $PER_ENV_RC ]; then
   source $PER_ENV_RC
 fi
 
-# fzf
+# fzf: use RipGrep (rg)
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-messages --glob '!.git/*'"
 
 # rbenv:
