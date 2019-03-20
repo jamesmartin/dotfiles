@@ -1,0 +1,94 @@
+#!/usr/bin/ruby
+# vim: ft=ruby
+# Configure monitors
+#
+# Usage: conmon <profile name>
+# E.g. conmon docked
+
+class Profile
+  ALL = [
+    {
+      name: "docked",
+      devices: [ { name: "DP2" },  { name: "LVDS1", role: "primary" } ],
+      options: "--output DP2 --auto --same-as LVDS1 --output LVDS1 --scale-from 2560x1440"
+    },
+    {
+      name: "normal",
+      devices: [ { name: "DP2" },  { name: "LVDS1", role: "primary" } ],
+      options: "--output LVDS1 --auto --scale-from 1366x768 --output DP2 --off"
+    }
+  ]
+
+  def self.lookup(name)
+    config = ALL.find { |p| p[:name] == name }
+    return unless config
+    new(config)
+  end
+
+  attr_reader :devices, :name, :options
+
+  def initialize(config)
+    @name = config.fetch(:name)
+    @devices = config.fetch(:devices).map { |d| Device.new(d.fetch(:name), d[:role]) }
+    @options = config.fetch(:options)
+  end
+
+  def missing_devices(connected)
+    devices.select do |device|
+      connected.none? { |d| d.name == device.name }
+    end
+  end
+
+  def to_s
+    "Profile: '#{name}'"
+  end
+end
+
+class Device
+  attr_reader :name, :role
+
+  def initialize(name, role)
+    @name = name
+    @role = role
+  end
+
+  def to_s
+    if primary?
+      "#{name} (#{role})"
+    else
+      name
+    end
+  end
+
+  def primary?
+    role == "primary"
+  end
+end
+
+if $0 == __FILE__
+  profile = Profile.lookup(ARGV.shift)
+  if profile.nil?
+    puts "Supply a profile name"
+    exit 1
+  end
+  puts "Configuring monitors using #{profile}"
+
+  puts "Checking for required outputs..."
+
+  xrandr_output = `xrandr -q`
+  connected = xrandr_output.split("\n").map do |line|
+    match_data = /^(?<name>\w+) connected (?<role>primary)?/.match(line)
+    next if match_data.nil?
+    Device.new(match_data[:name], match_data[:role])
+  end.compact
+
+  missing = profile.missing_devices(connected)
+
+  if missing.any?
+    puts "Missing required device(s) for profile: #{missing.join(",")}"
+    exit 1
+  end
+
+  `xrandr #{profile.options}`
+  puts $?
+end
