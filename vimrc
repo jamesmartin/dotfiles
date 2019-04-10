@@ -486,6 +486,7 @@ endif
 " fzf fuzzy finder
 "
 set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 
 map <C-p> :Files<cr>
 map <C-b> :Buffers<cr>

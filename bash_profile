@@ -3,7 +3,11 @@ export PATH=/usr/local/bin:$PATH
 export EDITOR=/usr/local/bin/vim
 GPG_TTY=$(tty)
 export GPG_TTY
-eval $(gpg-agent --daemon)
+if ! ps -ax | grep -v grep | grep gpg-agent > /dev/null
+then
+  echo "Starting gpg-agent as daemon..."
+  eval $(gpg-agent --daemon)
+fi
 
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
@@ -51,16 +55,19 @@ if [ -e $PER_ENV_RC ]; then
   source $PER_ENV_RC
 fi
 
-[[ -s "$HOME/.bashrc" ]] && . "$HOME/.bashrc"  # Per machine bash configuration
-
-# fzf
+# fzf: use RipGrep (rg)
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-messages --glob '!.git/*'"
 
 # rbenv:
 # Rather than `$(rbenv init -)`, prepend rbenv shims onto the path.
 # We don't need all of the other fancy rbenv command line stuff.
 export PATH="$HOME/.rbenv/shims:$PATH"
+
+# Node.js
 export PATH="$HOME/.nodenv/bin:$PATH"
-export PATH=$PATH:$(go env GOPATH)/bin
-export GOPATH=$(go env GOPATH)
 eval "$(nodenv init -)"
+
+# Go
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/dev/goproj
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
