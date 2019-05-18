@@ -342,6 +342,18 @@ function! MarkdownLinkGitHubIssues()
   %s/\(\<https:\/\/github\.com\/\S*\/\(\S*\)\/\w\+\/\(\d*\)\S*\)\:\?\>/\[\2\#\3\]\(\1\)/c
 endfunction
 
+" Git co-author  **************************************************************
+"
+function! GitCoAuthor()
+  let curline = getline('.')
+  call inputsave()
+  let name = input('Enter name: ')
+  call inputrestore()
+  call inputsave()
+  let email = input('Enter email: ')
+  call setline('.', curline . 'Co-authored-by: ' . name . ' <' . email . '>')
+endfunction
+
 " Colors **********************************************************************
 set background=dark 
 colorscheme solarized
