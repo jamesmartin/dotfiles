@@ -344,7 +344,7 @@ endfunction
 
 " Git co-author  **************************************************************
 "
-function! GitCoAuthor()
+function! ManualGitCoAuthor()
   let curline = getline('.')
   call inputsave()
   let name = input('Enter name: ')
@@ -353,6 +353,16 @@ function! GitCoAuthor()
   let email = input('Enter email: ')
   call setline('.', curline . 'Co-authored-by: ' . name . ' <' . email . '>')
 endfunction
+
+function! s:insert_git_co_author(details)
+  let curline = getline('.')
+  call setline('.', curline . 'Co-authored-by: ' . a:details)
+endfunction
+
+command! -bang -nargs=* GitCoAuthor call fzf#run({
+  \   'source': 'hubberlist',
+  \   'sink': function('<sid>insert_git_co_author')
+  \   })
 
 " Colors **********************************************************************
 set background=dark 

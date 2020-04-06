@@ -1,5 +1,6 @@
 export PATH=~/.scripts:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/sbin:$PATH"
 export EDITOR=/usr/local/bin/vim
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -28,6 +29,7 @@ alias gup='git smart-pull'
 alias gl='git smart-log'
 alias gm='git smart-merge'
 alias gb='git branch -rav'
+alias gbn='git rev-parse --abbrev-ref HEAD'
 alias fmod='git status --porcelain -uno | cut -c4-' # Only the filenames of modified files
 alias umod='git status --porcelain -u | cut -c4-' # Only the filenames of unversioned files
 alias con='git status --short | grep -E "^(?:U|AA)"'
@@ -61,13 +63,16 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-messages --glob '!
 # rbenv:
 # Rather than `$(rbenv init -)`, prepend rbenv shims onto the path.
 # We don't need all of the other fancy rbenv command line stuff.
-export PATH="$HOME/.rbenv/shims:$PATH"
+if [ -d $HOME/.rbenv ]; then
+  export PATH="$HOME/.rbenv/shims:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 # Node.js
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
+#export PATH="$HOME/.nodenv/bin:$PATH"
+#eval "$(nodenv init -)"
 
 # Go
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/dev/goproj
-export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+#export GOROOT=/usr/local/go
+#export GOPATH=$HOME/dev/goproj
+#export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
