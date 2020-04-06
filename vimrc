@@ -321,6 +321,17 @@ map <leader>R :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
 map <leader>w :w\|:!script/features --profile wip<cr>
 
+" Copies the current file path (from the working directory) and line number to
+" the clipboard. Useful when running tests.
+function! CopyFilePathAndLineNumber()
+  let cfile = @%
+  let cline_number = line('.')
+  let copy_cmd = (":! echo " . cfile . ":" . cline_number . " | pbcopy")
+  exec copy_cmd
+endfunction
+
+map <leader>f :call CopyFilePathAndLineNumber()<cr>
+
 " GitHub Markdown **********************************************************************
 function! MarkdownLinkGitHubUsernames()
   echo "Linkifying GitHub usernames..."
