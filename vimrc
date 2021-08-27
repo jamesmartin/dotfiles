@@ -439,6 +439,16 @@ set textwidth=79
 set formatoptions=qrnl
 set colorcolumn=85
 
+function! SoftWrap()
+    let s:old_fo = &formatoptions
+    let s:old_tw = &textwidth
+    set fo=
+    set tw=999999 " works for paragraphs up to 12k lines
+    normal gggqG
+    let &fo = s:old_fo
+    let &tw = s:old_tw
+endfunction
+
 " Cursor Movement *************************************************************
 " Make cursor move by visual lines instead of file lines (when wrapping)
 map <up> gk
