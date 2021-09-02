@@ -43,3 +43,6 @@
 [submodule "vim/pack/jamesmartin/start/fzf.vim"]
 	path = vim/pack/jamesmartin/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "vim/pack/jamesmartin/start/vim-surround"]
+	path = vim/pack/jamesmartin/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
