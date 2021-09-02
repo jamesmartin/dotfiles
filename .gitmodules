@@ -16,3 +16,6 @@
 [submodule "vim/pack/jamesmartin/start/vim-fugitive"]
 	path = vim/pack/jamesmartin/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/pack/jamesmartin/start/vim-rhubarb"]
+	path = vim/pack/jamesmartin/start/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
