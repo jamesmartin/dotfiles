@@ -137,7 +137,7 @@ vnoremap <silent> # :<C-U>
 " Requires vim-fugitive
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! Link :exec "!ghpath %:p " . line(".")
-map <leader>l :GBrowse! -<cr>
+map <leader>l :GBrowse<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Run a given vim command on the results of fuzzy selecting from a given shell
