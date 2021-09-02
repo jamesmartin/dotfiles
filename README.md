@@ -41,7 +41,9 @@ Commit your changes.
 
 ## Colors
 
-[Solarized](http://ethanschoonover.com/solarized): Used for Vim and iTerm.
+[Solarized](http://ethanschoonover.com/solarized): Used for Vim and
+Terminal.app. There is a [Solarized Dark.terminal profile](extras/Solarized\
+Dark.terminal) that has been tweaked for Terminal.app on macOS.
 
 ## Font
 
