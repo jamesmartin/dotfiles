@@ -37,6 +37,3 @@
 [submodule "vim/bundle/vim-rego"]
 	path = vim/bundle/vim-rego
 	url = https://github.com/tsandall/vim-rego.git
-[submodule "vim/pack/jamesmartin/start/fzf"]
-	path = vim/pack/jamesmartin/start/fzf
-	url = https://github.com/junegunn/fzf.vim.git
