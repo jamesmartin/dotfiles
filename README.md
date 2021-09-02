@@ -11,19 +11,21 @@ To install vim submodules:
 
 ## Adding Vim Packages
 
-Vim plugins are managed by [pathogen](https://github.com/tpope/vim-pathogen).
-To add a new plugin:
+Vim plugins are managed by the built-in Vim `packages` system (`:help
+packages`).
+
+To add a new package:
 
 ```
-cd ./vim/bundle
-git submodule add https://github.com/some/vim.plugin.git
+git submodule add https://github.com/some/vim.plugin.git \
+  vim/pack/jamesmartin/start/vim.plugin
 git commit -m "Add some vim plugin"
 ```
 
 ## Removing Vim Packages
 
 ```
-git submodule deinit ./vim/bundle/vim.plugin
+git submodule deinit ./vim/pack/jamesmartin/start/vim.plugin
 git rm ./vim/bundle/vim.plugin
 # Note: asubmodule (no trailing slash)
 # or, if you want to leave it in your working tree
