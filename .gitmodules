@@ -46,3 +46,6 @@
 [submodule "vim/pack/jamesmartin/start/vim-surround"]
 	path = vim/pack/jamesmartin/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/pack/jamesmartin/start/nerdtree"]
+	path = vim/pack/jamesmartin/start/nerdtree
+	url = https://github.com/preservim/nerdtree.git
