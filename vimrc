@@ -119,8 +119,6 @@ vnoremap / /\v
 nnoremap <tab> %
 vnoremap <tab> %
 
-call pathogen#infect()
-
 " Search for selected text, forwards or backwards.
 " http://vim.wikia.com/wiki/Search_for_visually_selected_text
 vnoremap <silent> * :<C-U>
