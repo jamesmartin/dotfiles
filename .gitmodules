@@ -10,9 +10,6 @@
 [submodule "vim/pack/jamesmartin/start/nerdtree"]
 	path = vim/pack/jamesmartin/start/nerdtree
 	url = https://github.com/preservim/nerdtree.git
-[submodule "vim/pack/jamesmartin/start/vim-ripgrep"]
-	path = vim/pack/jamesmartin/start/vim-ripgrep
-	url = https://github.com/jremmen/vim-ripgrep.git
 [submodule "vim/pack/jamesmartin/start/vim-fugitive"]
 	path = vim/pack/jamesmartin/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
