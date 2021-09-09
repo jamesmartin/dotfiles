@@ -10,17 +10,10 @@
   dump = cat-file -p
   branch-name = "!git rev-parse --abbrev-ref HEAD"
 
-[user]
-	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
-	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
-
 [color]
   branch = auto
   status = auto
   ui = auto
 
 [core]
-	excludesfile = <%= ENV['HOME'] %>/.gitignore
-
-[github]
-	user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
+	excludesfile = ~/.gitignore
