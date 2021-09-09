@@ -1,3 +1,10 @@
 !#/bin/sh
 
 rake install[quiet]
+
+# Codespaces has a .gitconfig already setup, but in order to take advantage of
+# the attributes set in /etc/gitconfig we have to explicitly include the path.
+# Thanks, @tarebyte!
+if [ $CODESPACES ]; then
+	git config --global include.path /etc/gitconfig
+fi
