@@ -2,6 +2,8 @@
 
 rake install[quiet]
 
+git submodule update --init --recursive
+
 # Codespaces has a .gitconfig already setup, but in order to take advantage of
 # the attributes set in /etc/gitconfig we have to explicitly include the path.
 # Thanks, @tarebyte!
