@@ -1,7 +1,7 @@
 export PATH=~/.scripts:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
-export EDITOR=/usr/local/bin/vim
+export EDITOR=$(which vim)
 GPG_TTY=$(tty)
 export GPG_TTY
 if ! ps -ax | grep -v grep | grep gpg-agent > /dev/null
@@ -19,8 +19,6 @@ alias ll='ls -h1'
 alias l="ls -alsht"
 alias t="tree -L 2"
 alias rdp="sh ~/.scripts/rdp.sh"
-
-alias vim=$EDITOR
 
 alias j='jobs'
 
