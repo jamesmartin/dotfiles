@@ -67,12 +67,3 @@ if [ -d $HOME/.rbenv ]; then
   export PATH="$HOME/.rbenv/shims:$PATH"
   eval "$(rbenv init -)"
 fi
-
-# Node.js
-#export PATH="$HOME/.nodenv/bin:$PATH"
-#eval "$(nodenv init -)"
-
-# Go
-#export GOROOT=/usr/local/go
-#export GOPATH=$HOME/dev/goproj
-#export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
