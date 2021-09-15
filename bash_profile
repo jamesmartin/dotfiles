@@ -55,6 +55,7 @@ if [ -e $PER_ENV_RC ]; then
   source $PER_ENV_RC
 fi
 
+if [ -f "$HOME/.profile" ]; then source "$HOME/.profile"; fi
 source "$HOME/.bashrc"
 
 # fzf: use RipGrep (rg)
