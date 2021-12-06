@@ -17,3 +17,6 @@
 
 [core]
 	excludesfile = ~/.gitignore
+[user]
+	name = James Martin
+	email = git@jmrtn.com
