@@ -1,1 +1,3 @@
-brew 'ag'
+brew 'fzf'
+brew 'rg'
+brew 'rbenv'
