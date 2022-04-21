@@ -4,6 +4,6 @@ sudo apt-get install -y \
   ripgrep
 
 fzf_tarball=fzf-0.27.2-linux_amd64.tar.gz
-sudo curl -OL https://github.com/junegunn/fzf/releases/download/0.27.2/$fzf_tarball &&
-  tar -xf $fzf_tarball -C /usr/bin/ &&
+curl -OL https://github.com/junegunn/fzf/releases/download/0.27.2/$fzf_tarball &&
+  sudo tar -xf $fzf_tarball -C /usr/bin/ &&
   rm $fzf_tarball
