@@ -16,12 +16,16 @@
   ui = auto
 
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
+  
 [user]
-	name = James Martin
-	email = git@jmrtn.com
+  name = James Martin
+  email = git@jmrtn.com
 
 [credential "https://github.com"]
   helper = github-org-token --file='/Users/jamesmartin/.github-org-credentials'
   useHttpPath = true
   username = jamesmartin
+
+[includeIf "gitdir:**/workspaces/**/.git"]
+  path = ~/.gitconfig-codespaces
