@@ -44,9 +44,8 @@ Commit your changes.
 ## Colors
 
 [Solarized](http://ethanschoonover.com/solarized): Used for Vim and
-Terminal.app. There is a [Solarized Dark.terminal profile](extras/Solarized\
-Dark.terminal) that has been tweaked for Terminal.app on macOS.
+Terminal.app. The Terminal profile from the canonical package doesn't really work anymore but I've had good luck with a [3rd-party clone](https://github.com/lysyi3m/macos-terminal-themes/blob/8c0b2d15070e00c9d61688063145942b60621f96/themes/Solarized%20Dark.terminal).
 
 ## Font
 
-[Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro): 18pt.
+[Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro): 18pt (Light).
