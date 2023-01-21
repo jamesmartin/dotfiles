@@ -48,4 +48,4 @@ Terminal.app. The Terminal profile from the canonical package doesn't really wor
 
 ## Font
 
-[Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro): 18pt (Light).
+[Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro): OTF 18pt (Light).
