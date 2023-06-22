@@ -6,8 +6,10 @@
 
 To install vim submodules:
 
-`git submodule init`
-`git submodule update`
+```
+git submodule init
+git submodule update
+```
 
 ## Adding Vim Packages
 
