@@ -31,6 +31,7 @@ alias gbn='git rev-parse --abbrev-ref HEAD'
 alias fmod='git status --porcelain -uno | cut -c4-' # Only the filenames of modified files
 alias umod='git status --porcelain -u | cut -c4-' # Only the filenames of unversioned files
 alias con='git status --short | grep -E "^(?:U|AA)"'
+alias ncon='git diff --name-only --diff-filter=U --relative'
 alias ajax="curl -H 'X-Requested-With: XMLHttpRequest'"
 alias marked="open -a 'Marked 2'"
 
