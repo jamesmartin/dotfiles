@@ -9,6 +9,7 @@
   type = cat-file -t
   dump = cat-file -p
   branch-name = "!git rev-parse --abbrev-ref HEAD"
+  con = diff --name-only --diff-filter=U --relative
 
 [color]
   branch = auto
