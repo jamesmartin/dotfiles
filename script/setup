@@ -10,3 +10,9 @@ git submodule update --init --recursive
 if [ $CODESPACES ]; then
 	git config --global include.path /etc/gitconfig
 fi
+
+# Fetch and build a working version of Vim.
+VIM_TAG=v9.1.0041
+git clone --depth 1 --branch $VIM_TAG https://github.com/vim/vim.git tmpvim
+cd tmpvim/src
+sudo make install
