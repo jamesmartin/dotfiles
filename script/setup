@@ -5,9 +5,12 @@ VIM_TAG=v9.1.0041
 git clone --depth 1 --branch $VIM_TAG https://github.com/vim/vim.git tmpvim
 cd tmpvim/src
 sudo make install
+cd ..
 
+# Link dotfiles + interpolate with ERB
 rake install[quiet]
 
+# Fetch Vim dependencies
 git submodule update --init --recursive
 
 # Codespaces has a .gitconfig already setup, but in order to take advantage of
