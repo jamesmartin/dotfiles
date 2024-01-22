@@ -1,17 +1,22 @@
 #!/bin/bash
 
+
+# Fetch Vim dependencies
+echo "Installing vim plugins..."
+git submodule update --init --recursive
+
+
+# Link dotfiles + interpolate with ERB
+echo "Symlinking dotfiles..."
+rake install[quiet]
+
 # Fetch and build a working version of Vim.
 VIM_TAG=v9.1.0041
+echo "Installing vim $VIM_TAG..."
 git clone --depth 1 --branch $VIM_TAG https://github.com/vim/vim.git tmpvim
 cd tmpvim/src
 sudo make install
-cd ..
-
-# Link dotfiles + interpolate with ERB
-rake install[quiet]
-
-# Fetch Vim dependencies
-git submodule update --init --recursive
+cd /workspaces/.codespaces/.persistedshare/dotfiles
 
 # Codespaces has a .gitconfig already setup, but in order to take advantage of
 # the attributes set in /etc/gitconfig we have to explicitly include the path.
