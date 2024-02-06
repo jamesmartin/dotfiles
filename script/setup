@@ -9,7 +9,7 @@ eval "$(rbenv init -)"
 
 # Link dotfiles + interpolate with ERB
 echo "Symlinking dotfiles..."
-rake install[quiet]
+/workspaces/github/bin/rake install[quiet]
 
 # Fetch and build a working version of Vim.
 VIM_TAG=v9.1.0041
