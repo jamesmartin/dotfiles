@@ -20,6 +20,12 @@ sudo make install
 sudo update-alternatives --set vim $(which vim.basic)
 cd /workspaces/.codespaces/.persistedshare/dotfiles
 
+# Fetch and build a working version of fzf:
+fzf_tarball=fzf-0.46.1-linux_amd64.tar.gz
+curl -OL https://github.com/junegunn/fzf/releases/download/0.46.1/$fzf_tarball &&
+  sudo tar -xf $fzf_tarball -C /usr/local/bin/ &&
+  rm $fzf_tarball
+
 # Codespaces has a .gitconfig already setup, but in order to take advantage of
 # the attributes set in /etc/gitconfig we have to explicitly include the path.
 # Thanks, @tarebyte!
