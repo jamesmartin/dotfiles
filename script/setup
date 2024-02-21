@@ -17,6 +17,7 @@ echo "Installing vim $VIM_TAG..."
 git clone --depth 1 --branch $VIM_TAG https://github.com/vim/vim.git tmpvim
 cd tmpvim/src
 sudo make install
+sudo update-alternatives --set vim $(which vim.basic)
 cd /workspaces/.codespaces/.persistedshare/dotfiles
 
 # Codespaces has a .gitconfig already setup, but in order to take advantage of
