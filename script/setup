@@ -1,8 +1,30 @@
 #!/bin/bash
 
-rake install[quiet]
-
+# Fetch Vim dependencies
+echo "Installing vim plugins..."
 git submodule update --init --recursive
+
+# Ensure rbenv is available (helps to ensure rake install will work later)
+eval "$(rbenv init -)"
+
+# Link dotfiles + interpolate with ERB
+echo "Symlinking dotfiles..."
+/workspaces/github/bin/rake install[quiet]
+
+# Fetch and build a working version of Vim.
+VIM_TAG=v9.1.0041
+echo "Installing vim $VIM_TAG..."
+git clone --depth 1 --branch $VIM_TAG https://github.com/vim/vim.git tmpvim
+cd tmpvim/src
+sudo make install
+sudo update-alternatives --set vim $(which vim.basic)
+cd /workspaces/.codespaces/.persistedshare/dotfiles
+
+# Fetch and build a working version of fzf:
+fzf_tarball=fzf-0.46.1-linux_amd64.tar.gz
+curl -OL https://github.com/junegunn/fzf/releases/download/0.46.1/$fzf_tarball &&
+  sudo tar -xf $fzf_tarball -C /usr/local/bin/ &&
+  rm $fzf_tarball
 
 # Codespaces has a .gitconfig already setup, but in order to take advantage of
 # the attributes set in /etc/gitconfig we have to explicitly include the path.
